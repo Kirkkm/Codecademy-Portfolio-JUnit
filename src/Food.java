@@ -3,6 +3,5 @@ public class Food extends Item{
         super(name, description, "Food");
     }
 
-    public int effect(){
-    }
+    // public int effect(){}
 }

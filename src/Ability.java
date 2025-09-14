@@ -3,5 +3,10 @@ public class Ability {
     String description;
     String type;
 
-    public int effect(){};
+    public Ability(String name, String description, String type) {
+        this.name = name;
+        this.description = description;
+        this.type = type;
+    }
+    // public int effect(){};
 }
