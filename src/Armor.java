@@ -1,5 +1,5 @@
 class Armor extends Item {
-    int defensePoints;
+    private final int defensePoints;
 
     public Armor(String name, String description, int defensePoints) {
 

@@ -2,26 +2,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 abstract class Entity {
-    String name;
-    int health;
-    int baseAttackPoint;
-    int defensePoints;
+    private String name;
+    private HashMap<String, Integer> stats = new HashMap<>();
     ArrayList<Ability> abilities;
     Weapon equipedWeapon;
     HashMap<String, ArrayList<Item>> items;
 
     public Entity(String name, int health, int baseAttackPoint, int defensePoints){
         this.name = name;
-        this.health = health;
-        this.baseAttackPoint = baseAttackPoint;
-        this.defensePoints = defensePoints;
+        stats.put("health", health);
+        stats.put("baseAttack", baseAttackPoint);
+        stats.put("defensePoints", defensePoints);
     };
 
     public int attack() {
         if (this.equipedWeapon == null) {
-            return baseAttackPoint;
+            return stats.get("baseAttackPoint");
         }
-        return this.equipedWeapon.attackPoints;
+        return this.equipedWeapon.getAttackPoints();
     }
 
     public void useAbility(String ability){}
@@ -42,10 +40,10 @@ abstract class Entity {
 
     public void useItem(String item){}
     public void storeItem(Item item) {
-        if (!this.items.containsKey(item.type)) {
-            this.items.put(item.type, new ArrayList<>());
+        if (!this.items.containsKey(item.getType())) {
+            this.items.put(item.getType(), new ArrayList<>());
         }
-        this.items.get(item.type).add(item);
+        this.items.get(item.getType()).add(item);
     }
 
     public ArrayList<Item> getItems() {

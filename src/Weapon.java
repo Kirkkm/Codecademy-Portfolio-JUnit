@@ -1,5 +1,5 @@
 class Weapon extends Item {
-    int attackPoints;
+    private final int attackPoints;
 
     public Weapon(String name, String description, int attackPoints) {
 
