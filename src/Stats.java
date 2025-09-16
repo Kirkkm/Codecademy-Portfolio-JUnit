@@ -25,7 +25,7 @@ public class Stats {
         return this.baseAttack;
     }
 
-    public int updateBaseAttack(int attackPoints) {
+    public void updateBaseAttack(int attackPoints) {
         this.baseAttack += attackPoints;
     }
 

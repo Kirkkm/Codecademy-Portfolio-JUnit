@@ -2,22 +2,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 abstract class Entity {
-    private String name;
-    private HashMap<String, Integer> stats = new HashMap<>();
+    String name;
+    Stats stats;
     ArrayList<Ability> abilities;
     Weapon equipedWeapon;
     HashMap<String, ArrayList<Item>> items;
 
     public Entity(String name, int health, int baseAttackPoint, int defensePoints){
         this.name = name;
-        stats.put("health", health);
-        stats.put("baseAttack", baseAttackPoint);
-        stats.put("defensePoints", defensePoints);
+        stats = new Stats(health, baseAttackPoint, defensePoints);
     };
 
     public int attack() {
         if (this.equipedWeapon == null) {
-            return stats.get("baseAttackPoint");
+            return stats.getBaseAttack();
         }
         return this.equipedWeapon.getAttackPoints();
     }

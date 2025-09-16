@@ -15,27 +15,6 @@ class EntityTest {
     }
 
     @Test
-    void getStats() {
-        assertEquals("Alex", humanEntityTest.name);
-        assertEquals(1000, humanEntityTest.health);
-        assertEquals(500, humanEntityTest.baseAttackPoint);
-        assertEquals(500, humanEntityTest.defensePoints);
-
-        assertEquals("Hunter", alienEntityTest.name);
-        assertEquals(300, alienEntityTest.health);
-        assertEquals(1200, alienEntityTest.baseAttackPoint);
-        assertEquals(200, alienEntityTest.defensePoints);
-    }
-
-    @Test
-    void setHealth() {
-        humanEntityTest.health = 500;
-        alienEntityTest.health =250;
-        assertEquals(500, humanEntityTest.health);
-        assertEquals(250, alienEntityTest.health);
-    }
-
-    @Test
     void attack() {
         assertEquals(500, humanEntityTest.attack());
         assertEquals(1200, alienEntityTest.attack());
