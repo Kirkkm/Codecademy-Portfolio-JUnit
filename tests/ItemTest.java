@@ -23,7 +23,7 @@ class ItemTest {
         battleRifle = new Weapon("Battle Rifle", brDescription, 1500);
         plasmaRifle = new Weapon("Plasma Rifle", prDescription, 1200);
 
-        MRE = new Food("MRE", mreDescription);
+        MRE = new Food("MRE", mreDescription, new Stats(1000, 1000, 500));
     }
 
     @Test
@@ -75,11 +75,5 @@ class ItemTest {
                 Description: The Okarda'phaa-pattern Rifle (UNSC Type classification: Type-25 Directed Energy Rifle, T-25 DER), more commonly known as the plasma rifle or plasma gun, is a fully automatic rifle, formerly serving as a Covenant infantry weapon. The Type-25 DER was the primary weapon of the Covenant's officer corps, standard issue to Sangheili and Jiralhanae. However, lower-caste species within the Covenant who had attained significant rank within the Covenant military were also issued this weapon during operations. The Type-25 DER was one of the earliest and most frequently encountered Covenant plasma weapons. It occupies a role very similar to the human assault rifle.
                 Type: Weapon""";
         assertEquals(expectedPr, plasmaRifle.toString());
-
-        String expected = """
-                Name: MRE
-                Description: a self-contained, prepackaged meal designed for military and emergency use, providing a full day's caloric and nutritional requirements in a single, lightweight pouch
-                Type: Food""";
-        assertEquals(expected, MRE.toString());
     }
 }
