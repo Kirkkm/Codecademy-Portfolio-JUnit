@@ -1,9 +1,9 @@
 class Weapon extends Item {
     private final int attackPoints;
 
-    public Weapon(String name, String description, int attackPoints) {
+    public Weapon(String name, String description, int attackPoints, int quantity) {
 
-        super(name, description, "Weapon");
+        super(name, description, "Weapon", quantity);
         this.attackPoints = attackPoints;
     }
 

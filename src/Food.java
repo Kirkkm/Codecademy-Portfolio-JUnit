@@ -1,14 +1,20 @@
 public class Food extends Item{
     private Stats statsEffect;
-    public Food(String name, String description, Stats statsEffect) {
+    public Food(String name, String description, Stats statsEffect, int quantity) {
         this.statsEffect = statsEffect;
-        super(name, description, "Food");
+        super(name, description, "Food", quantity);
     }
 
     public Stats eatFood(Stats stats) {
+        if (this.getQuantity() == 0) {
+            System.out.println("You don't have enough "+ this.getName() +" food to eat!");
+            return stats;
+        }
         stats.retoreHealth(this.statsEffect.getHealth());
         stats.updateBaseAttack(this.statsEffect.getBaseAttack());
         stats.updateDefensePoints(this.statsEffect.getDefensePoints());
+
+        this.removeItem(1);
 
         return stats;
     }

@@ -18,12 +18,12 @@ class ItemTest {
 
     @BeforeEach
     void setUp() {
-        mjolnirArmor = new Armor("MJOLNIR Armor", mjolnirDescription, 20000);
+        mjolnirArmor = new Armor("MJOLNIR Armor", mjolnirDescription, 20000, 1);
 
-        battleRifle = new Weapon("Battle Rifle", brDescription, 1500);
-        plasmaRifle = new Weapon("Plasma Rifle", prDescription, 1200);
+        battleRifle = new Weapon("Battle Rifle", brDescription, 1500, 1);
+        plasmaRifle = new Weapon("Plasma Rifle", prDescription, 1200, 1);
 
-        MRE = new Food("MRE", mreDescription, new Stats(1000, 1000, 500));
+        MRE = new Food("MRE", mreDescription, new Stats(1000, 1000, 500), 3);
     }
 
     @Test
@@ -54,6 +54,27 @@ class ItemTest {
         assertEquals("Weapon", plasmaRifle.getType());
 
         assertEquals("Food", MRE.getType());
+    }
+
+    @Test
+    void getQuantity() {
+        assertEquals(1, MRE.getQuantity());
+    }
+
+    @Test
+    void addItem() {
+        MRE.addItem(1);
+        assertEquals(4, MRE.getQuantity());
+
+        assertThrowsExactly(IllegalArgumentException.class,() -> MRE.addItem(-1));
+    }
+
+    @Test
+    void removeItem() {
+        MRE.removeItem(2);
+        assertEquals(1, MRE.getQuantity());
+
+        assertThrowsExactly(IllegalArgumentException.class,() -> MRE.removeItem(-1));
     }
 
     @Test

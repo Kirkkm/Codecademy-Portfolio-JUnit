@@ -12,7 +12,7 @@ class FoodTest {
     void setUp() {
         String mreDescription = "a self-contained, prepackaged meal designed for military and emergency use, providing a full day's caloric and nutritional requirements in a single, lightweight pouch";
         Stats mreStatsEffect = new Stats(500, 200, 0);
-        MRE = new Food("MRE", mreDescription, mreStatsEffect);
+        MRE = new Food("MRE", mreDescription, mreStatsEffect, 1);
 
         statsTest = new Stats(1000, 1000, 500);
     }
@@ -23,6 +23,12 @@ class FoodTest {
         assertEquals(1500, updatedStats.getHealth());
         assertEquals(1200, updatedStats.getBaseAttack());
         assertEquals(500, updatedStats.getDefensePoints());
+
+        Stats noUpdatedStats = MRE.eatFood(statsTest);
+
+        assertEquals(1500, noUpdatedStats.getHealth());
+        assertEquals(1200, noUpdatedStats.getBaseAttack());
+        assertEquals(500, noUpdatedStats.getDefensePoints());
     }
 
     @Test
