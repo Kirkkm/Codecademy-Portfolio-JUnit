@@ -58,7 +58,7 @@ class ItemTest {
 
     @Test
     void getQuantity() {
-        assertEquals(1, MRE.getQuantity());
+        assertEquals(3, MRE.getQuantity());
     }
 
     @Test
