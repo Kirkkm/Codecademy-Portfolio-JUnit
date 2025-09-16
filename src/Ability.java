@@ -9,4 +9,9 @@ public class Ability {
         this.type = type;
     }
     // public int effect(){};
+
+    @Override
+    public String toString() {
+        return "Name: " + this.name + "\nDescription: " + this.description + "\nType: " + this.type;
+    }
 }

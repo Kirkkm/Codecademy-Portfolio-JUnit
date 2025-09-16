@@ -2,16 +2,28 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 abstract class Entity {
-    String name;
-    Stats stats;
-    ArrayList<Ability> abilities;
-    Weapon equipedWeapon;
-    HashMap<String, ArrayList<Item>> items;
+    private final String name;
+    private Stats stats;
+    private ArrayList<Ability> abilities;
+    private Weapon equipedWeapon;
+    private HashMap<String, ArrayList<Item>> items;
 
     public Entity(String name, int health, int baseAttackPoint, int defensePoints){
         this.name = name;
         stats = new Stats(health, baseAttackPoint, defensePoints);
     };
+
+    public String getName() {
+        return this.name;
+    }
+
+    public Stats getStats() {
+        return this.stats;
+    }
+
+    public void setStats(Stats stats) {
+        this.stats = stats;
+    }
 
     public int attack() {
         if (this.equipedWeapon == null) {
@@ -55,4 +67,23 @@ abstract class Entity {
     public ArrayList<Item> getItems(String type) {
         return this.items.get(type);
     }
+
+    @Override
+    public String toString() {
+        ArrayList<Item> allItems = getItems();
+        StringBuilder allItemsToString = new StringBuilder("Inventory\n===========");
+        for (Item item: allItems) {
+            allItemsToString.append(item.toString()).append("\n\n");
+        }
+
+        ArrayList<Ability> allAbilities = getAbilities();
+        StringBuilder allAbilitiesToString = new StringBuilder("Abilities\n===========");
+        for (Ability ability: allAbilities) {
+            allAbilitiesToString.append(ability.toString()).append("\n\n");
+        }
+
+        return "Name: "+ this.name+"\nEquipped Weapon: "+ this.equipedWeapon+"\n"+stats.toString()+"\n"+allAbilitiesToString+"\n"+allItemsToString;
+    }
+
+
 }

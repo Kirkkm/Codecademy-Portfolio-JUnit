@@ -56,4 +56,15 @@ class StatsTest {
         testStats.updateDefensePoints(-500);
         assertEquals(1000, testStats.getDefensePoints());
     }
+
+    @Test
+    void toStringTest() {
+        String expect = """
+                Stats
+                =========
+                Health: 1500
+                Base Attack: 1000
+                Defense Points: 1000""";
+        assertEquals(expect, testStats.toString());
+    }
 }

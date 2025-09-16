@@ -36,4 +36,10 @@ public class Stats {
     public void updateDefensePoints(int defensePoints) {
         this.defensePoints += defensePoints;
     }
+
+    @Override
+    public String toString() {
+        return "Stats\n=========\nHealth: "+this.health+"\nBase Attack: "+this.baseAttack+"\nDefense Points: "+this.defensePoints;
+
+    }
 }
