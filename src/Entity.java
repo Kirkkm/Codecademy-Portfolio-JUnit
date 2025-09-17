@@ -4,13 +4,13 @@ import java.util.HashMap;
 abstract class Entity {
     private final String name;
     private Stats stats;
-    private ArrayList<Ability> abilities;
+    private final HashMap<String, Ability> abilities = new HashMap<>();
     private Weapon equipedWeapon;
     private HashMap<String, ArrayList<Item>> items;
 
     public Entity(String name, int health, int baseAttackPoint, int defensePoints){
         this.name = name;
-        stats = new Stats(health, baseAttackPoint, defensePoints);
+        this.stats = new Stats(health, baseAttackPoint, defensePoints);
     };
 
     public String getName() {
@@ -25,6 +25,14 @@ abstract class Entity {
         this.stats = stats;
     }
 
+    public void equipWeapon(Weapon weapon) {
+        this.equipedWeapon = weapon;
+    }
+
+    public Weapon getEquipedWeapon() {
+        return this.equipedWeapon;
+    }
+
     public int attack() {
         if (this.equipedWeapon == null) {
             return stats.getBaseAttack();
@@ -32,20 +40,17 @@ abstract class Entity {
         return this.equipedWeapon.getAttackPoints();
     }
 
-    public void useAbility(String ability){}
     public void learnAbility(Ability ability) {
-        this.abilities.add(ability);
+        this.abilities.put(ability.getName(), ability);
     }
-    public ArrayList<Ability> getAbilities() {
+
+    public HashMap<String, Ability> getAbilities() {
         return this.abilities;
     }
 
-    public void equipWeapon(Weapon weapon) {
-        this.equipedWeapon = weapon;
-    }
-
-    public Weapon getEquipedWeapon() {
-        return this.equipedWeapon;
+    public void useAbility(String ability) {
+        Ability abilityToUse = this.abilities.get(ability);
+        this.stats = abilityToUse.useAbility(this.stats);
     }
 
     public void useItem(String item){}
@@ -76,9 +81,9 @@ abstract class Entity {
             allItemsToString.append(item.toString()).append("\n\n");
         }
 
-        ArrayList<Ability> allAbilities = getAbilities();
+        HashMap<String, Ability> allAbilities = getAbilities();
         StringBuilder allAbilitiesToString = new StringBuilder("Abilities\n===========");
-        for (Ability ability: allAbilities) {
+        for (Ability ability: allAbilities.values()) {
             allAbilitiesToString.append(ability.toString()).append("\n\n");
         }
 
