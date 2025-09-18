@@ -6,7 +6,7 @@ abstract class Entity {
     private Stats stats;
     private final HashMap<String, Ability> abilities = new HashMap<>();
     private Weapon equipedWeapon;
-    private HashMap<String, ArrayList<Item>> items;
+    private final HashMap<String, ArrayList<IItem>> items = new HashMap<>();
 
     public Entity(String name, int health, int baseAttackPoint, int defensePoints){
         this.name = name;
@@ -53,31 +53,40 @@ abstract class Entity {
         this.stats = abilityToUse.useAbility(this.stats);
     }
 
-    public void useItem(String item){}
     public void storeItem(Item item) {
         if (!this.items.containsKey(item.getType())) {
             this.items.put(item.getType(), new ArrayList<>());
         }
+
+        // checking if we already have a stored item
+        for (IItem i : this.items.get(item.getType())) {
+            // if we find a matching Item we update its quantity
+            if (i.getName().equals(item.getName())) {
+                i.addItem(item.getQuantity());
+                return;
+            }
+        }
+
         this.items.get(item.getType()).add(item);
     }
 
-    public ArrayList<Item> getItems() {
-        ArrayList<Item> allItems = new ArrayList<>();
-        for (ArrayList<Item> items: this.items.values()) {
+    public ArrayList<IItem> listItems() {
+        ArrayList<IItem> allItems = new ArrayList<>();
+        for (ArrayList<IItem> items: this.items.values()) {
             allItems.addAll(items);
         }
 
         return allItems;
     }
-    public ArrayList<Item> getItems(String type) {
+    public ArrayList<IItem> listItems(String type) {
         return this.items.get(type);
     }
 
     @Override
     public String toString() {
-        ArrayList<Item> allItems = getItems();
+        ArrayList<IItem> allItems = listItems();
         StringBuilder allItemsToString = new StringBuilder("Inventory\n===========");
-        for (Item item: allItems) {
+        for (IItem item: allItems) {
             allItemsToString.append(item.toString()).append("\n\n");
         }
 

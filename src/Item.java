@@ -1,4 +1,4 @@
-abstract class Item {
+abstract class Item implements IItem {
     private final String name;
     private final String description;
     private final String type;
