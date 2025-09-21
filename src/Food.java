@@ -21,7 +21,7 @@ public class Food extends Item{
 
     @Override
     public String toString() {
-        String statusEffect = "Status Effect\n=========\nHealth: "+this.statsEffect.getHealth()+"\nBase Attack: "+ this.statsEffect.getBaseAttack()+"\nDefense: "+this.statsEffect.getDefensePoints();
+        String statusEffect = "Status Effect\n--------------\nHealth: "+this.statsEffect.getHealth()+"\nBase Attack: "+ this.statsEffect.getBaseAttack()+"\nDefense: "+this.statsEffect.getDefensePoints();
         return "Name: " + this.getName() + "\nDescription: " + this.getDescription() + "\nType: Food\n\n"+statusEffect;
     }
 }

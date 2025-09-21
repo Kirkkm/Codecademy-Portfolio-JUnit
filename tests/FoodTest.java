@@ -39,7 +39,7 @@ class FoodTest {
                 Type: Food
                 
                 Status Effect
-                =========
+                --------------
                 Health: 500
                 Base Attack: 200
                 Defense: 0""";

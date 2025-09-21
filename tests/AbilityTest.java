@@ -44,7 +44,7 @@ class AbilityTest {
                 Type: Universal
                 
                 Status Effect
-                =========
+                --------------
                 Health: 0
                 Base Attack: 0
                 Defense: 500""";

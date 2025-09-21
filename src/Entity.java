@@ -85,13 +85,13 @@ abstract class Entity {
     @Override
     public String toString() {
         ArrayList<IItem> allItems = listItems();
-        StringBuilder allItemsToString = new StringBuilder("Inventory\n===========");
+        StringBuilder allItemsToString = new StringBuilder("\nInventory\n===========\n");
         for (IItem item: allItems) {
             allItemsToString.append(item.toString()).append("\n\n");
         }
 
         HashMap<String, Ability> allAbilities = getAbilities();
-        StringBuilder allAbilitiesToString = new StringBuilder("Abilities\n===========");
+        StringBuilder allAbilitiesToString = new StringBuilder("\nAbilities\n===========\n");
         for (Ability ability: allAbilities.values()) {
             allAbilitiesToString.append(ability.toString()).append("\n\n");
         }
