@@ -6,10 +6,15 @@ public class Human extends Entity {
     };
 
     public void equipArmor(Armor armor) {
-        equippedArmor = armor;
+        this.equippedArmor = armor;
         this.setStats(armor.getDefensePoints(this.getStats()));
 
     };
+
+    public Armor getEquippedArmor() {
+        return this.equippedArmor;
+    }
+
     public void eatFood(Food food) {
         this.setStats(food.eatFood(this.getStats()));
     };
