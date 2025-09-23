@@ -22,7 +22,7 @@ public class Alien extends Entity {
             defensePoints = 500;
         }
 
-        super(name, health, baseAttackPoint, defensePoints);
+        super(name, health, health, baseAttackPoint, defensePoints);
     }
 
     public void mutate(){}

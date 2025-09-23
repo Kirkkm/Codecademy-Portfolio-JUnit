@@ -13,14 +13,6 @@ class StatsTest {
     }
 
     @Test
-    void testSetUp() {
-        assertThrowsExactly(IllegalArgumentException.class, () -> new Stats(1500, 1000, 0, 0 ));
-        assertThrowsExactly(IllegalArgumentException.class, () -> new Stats(0, 1000, 0, 0 ));
-        assertThrowsExactly(IllegalArgumentException.class, () -> new Stats(1500, 0, 0, 0 ));
-        assertDoesNotThrow(() -> new Stats(1000, 1000, 1000, 1000 ));
-    }
-
-    @Test
     void healthMethods() {
         assertEquals(1000, testStats.getHealth());
 

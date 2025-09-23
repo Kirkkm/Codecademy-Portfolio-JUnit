@@ -20,14 +20,16 @@ class FoodTest {
     @Test
     void eatFood() {
         Stats updatedStats = MRE.eatFood(statsTest);
-        assertEquals(1500, updatedStats.getHealth());
-        assertEquals(1200, updatedStats.getBaseAttack());
+        assertEquals(1000, updatedStats.getHealth());
+        assertEquals(1000, updatedStats.getHealthPoints());
+        assertEquals(200, updatedStats.getBaseAttack());
         assertEquals(500, updatedStats.getDefensePoints());
 
         Stats noUpdatedStats = MRE.eatFood(statsTest);
 
-        assertEquals(1500, noUpdatedStats.getHealth());
-        assertEquals(1200, noUpdatedStats.getBaseAttack());
+        assertEquals(1000, noUpdatedStats.getHealth());
+        assertEquals(1000, noUpdatedStats.getHealthPoints());
+        assertEquals(200, noUpdatedStats.getBaseAttack());
         assertEquals(500, noUpdatedStats.getDefensePoints());
     }
 

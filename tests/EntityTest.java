@@ -37,8 +37,20 @@ class EntityTest {
 
         brace = new Ability("Brace", "Raise your defences to prepare for an attack", "Universal", new Stats(0, 0, 0, 500));
 
-        humanEntityTest = new Human("John", 1000, 500, 500);
+        humanEntityTest = new Human("John", 1000, 1000,500, 500);
         alienEntityTest = new Alien("Arbiter", "Attacker");
+    }
+
+    @Test
+    void testSetUp() {
+        assertThrowsExactly(IllegalArgumentException.class, () -> new Human("Bob", 1500, 1000, 0, 0 ));
+        assertThrowsExactly(IllegalArgumentException.class, () -> new Human("Bob", 0, 1000, 0, 0 ));
+        assertThrowsExactly(IllegalArgumentException.class, () -> new Human("Bob", 1500, 0, 0, 0 ));
+        assertDoesNotThrow(() -> new Human("Bob", 1000, 1500, 1000, 1000 ));
+
+        assertDoesNotThrow(() -> new Alien("CKJECT", "Base"));
+        assertDoesNotThrow(() -> new Alien("CKJECT", "Tank"));
+        assertDoesNotThrow(() -> new Alien("CKJECT", "Attacker"));
     }
 
     @Test
@@ -198,7 +210,7 @@ class EntityTest {
                 Equipped Weapon: null
                 Stats
                 =========
-                Health: 1000
+                Health: 1000/1000
                 Base Attack: 500
                 Defense Points: 500
                 
@@ -239,7 +251,7 @@ class EntityTest {
                 Equipped Weapon: null
                 Stats
                 =========
-                Health: 300
+                Health: 300/300
                 Base Attack: 1200
                 Defense Points: 200
                 

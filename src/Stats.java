@@ -5,13 +5,6 @@ public class Stats {
     private int defensePoints;
 
     Stats(int health, int healthPoints, int baseAttack, int defensePoints) {
-        if (healthPoints < health) {
-            throw new IllegalArgumentException("Health must be greater than or equal to health points");
-        }
-        if (healthPoints <= 0 || health <= 0) {
-            throw new IllegalArgumentException("Health and health points cannot be less than or equal to zero!");
-        }
-
         this.health = health;
         this.healthPoints = healthPoints;
         this.baseAttack = baseAttack;

@@ -1,8 +1,8 @@
 public class Human extends Entity {
     private Armor equippedArmor;
 
-    public Human(String name, int health, int baseAttackPoint, int defensePoints){
-        super(name, health, baseAttackPoint, defensePoints);
+    public Human(String name, int health, int healthPoints, int baseAttackPoint, int defensePoints){
+        super(name, health, healthPoints, baseAttackPoint, defensePoints);
     };
 
     public void equipArmor(Armor armor) {

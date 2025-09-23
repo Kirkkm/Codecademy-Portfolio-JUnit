@@ -8,9 +8,16 @@ abstract class Entity {
     private Weapon equipedWeapon;
     private final HashMap<String, ArrayList<IItem>> items = new HashMap<>();
 
-    public Entity(String name, int health, int baseAttackPoint, int defensePoints){
+    public Entity(String name, int health, int healthPoints, int baseAttackPoint, int defensePoints){
+        if (healthPoints < health) {
+            throw new IllegalArgumentException("Health points must be greater than or equal to health");
+        }
+        if (healthPoints <= 0 || health <= 0) {
+            throw new IllegalArgumentException("Health and health points cannot be less than or equal to zero!");
+        }
+
         this.name = name;
-        this.stats = new Stats(health, health, baseAttackPoint, defensePoints);
+        this.stats = new Stats(health, healthPoints, baseAttackPoint, defensePoints);
     }
 
     public String getName() {
