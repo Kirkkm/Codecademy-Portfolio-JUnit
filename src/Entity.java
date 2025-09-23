@@ -49,7 +49,11 @@ abstract class Entity {
 
     public void takeDamage(int damage) {
         int actualDamage = damage - this.stats.getDefensePoints();
-        this.stats.takeDamage(actualDamage);
+        if (actualDamage <= 0) {
+            this.stats.takeDamage(0);
+        } else {
+            this.stats.takeDamage(actualDamage);
+        }
     }
 
     public void learnAbility(Ability ability) {

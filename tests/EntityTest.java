@@ -37,7 +37,7 @@ class EntityTest {
 
         brace = new Ability("Brace", "Raise your defences to prepare for an attack", "Universal", new Stats(0, 0, 0, 500));
 
-        humanEntityTest = new Human("John", 1000, 1000,500, 500);
+        humanEntityTest = new Human("John", 1000, 1000, 500, 500);
         alienEntityTest = new Alien("Arbiter", "Attacker");
     }
 
@@ -108,6 +108,24 @@ class EntityTest {
 
         assertEquals(1500, humanEntityTest.attack());
         assertEquals(1600, alienEntityTest.attack());
+    }
+
+    @Test
+    void takeDamage() {
+        humanEntityTest.takeDamage(200);
+        assertEquals(1000, humanEntityTest.getStats().getHealth());
+        humanEntityTest.takeDamage(500);
+        assertEquals(1000, humanEntityTest.getStats().getHealth());
+        humanEntityTest.takeDamage(1000);
+        assertEquals(500, humanEntityTest.getStats().getHealth());
+
+
+        alienEntityTest.takeDamage(200);
+        assertEquals(300, alienEntityTest.getStats().getHealth());
+        alienEntityTest.takeDamage(100);
+        assertEquals(300, alienEntityTest.getStats().getHealth());
+        alienEntityTest.takeDamage(400);
+        assertEquals(100, alienEntityTest.getStats().getHealth());
     }
 
     @Test
