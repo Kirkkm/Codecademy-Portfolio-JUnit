@@ -7,6 +7,7 @@ public class Human extends Entity {
 
     public void equipArmor(Armor armor) {
         equippedArmor = armor;
+        this.setStats(armor.getDefensePoints(this.getStats()));
 
     };
     public void eatFood(Food food) {
