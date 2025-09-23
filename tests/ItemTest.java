@@ -23,7 +23,7 @@ class ItemTest {
         battleRifle = new Weapon("Battle Rifle", brDescription, 1500, 1);
         plasmaRifle = new Weapon("Plasma Rifle", prDescription, 1200, 1);
 
-        MRE = new Food("MRE", mreDescription, new Stats(1000, 1000, 500), 3);
+        MRE = new Food("MRE", mreDescription, new Stats(1000, 0,1000, 500), 3);
     }
 
     @Test

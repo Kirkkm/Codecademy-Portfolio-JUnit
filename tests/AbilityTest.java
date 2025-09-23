@@ -10,8 +10,8 @@ class AbilityTest {
 
     @BeforeEach
     void setUp() {
-        brace = new Ability("Brace", "Raise your defences to prepare for an attack", "Universal", new Stats(0, 0, 500));
-        statsTest = new Stats(1000, 1000, 500);
+        brace = new Ability("Brace", "Raise your defences to prepare for an attack", "Universal", new Stats(0, 0, 0, 500));
+        statsTest = new Stats(1000,1000, 1000, 500);
     }
 
     @Test

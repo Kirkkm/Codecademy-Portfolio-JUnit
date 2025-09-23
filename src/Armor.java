@@ -7,7 +7,8 @@ class Armor extends Item {
         this.defensePoints = defensePoints;
     }
 
-    public int getDefensePoints(){
-        return defensePoints;
+    public Stats getDefensePoints(Stats stats){
+        stats.updateDefensePoints(this.defensePoints);
+        return stats;
     }
 }

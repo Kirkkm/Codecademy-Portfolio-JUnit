@@ -9,24 +9,41 @@ class StatsTest {
 
     @BeforeEach
     void setUp() {
-        testStats = new Stats(1500, 1000, 1000);
+        testStats = new Stats(1000, 1000, 1000, 1000);
     }
 
     @Test
-    void getHealth() {
-        assertEquals(1500, testStats.getHealth());
+    void testSetUp() {
+        assertThrowsExactly(IllegalArgumentException.class, () -> new Stats(1500, 1000, 0, 0 ));
+        assertThrowsExactly(IllegalArgumentException.class, () -> new Stats(0, 1000, 0, 0 ));
+        assertThrowsExactly(IllegalArgumentException.class, () -> new Stats(1500, 0, 0, 0 ));
+        assertDoesNotThrow(() -> new Stats(1000, 1000, 1000, 1000 ));
     }
 
     @Test
-    void takeDamage() {
-        testStats.takeDamage(500);
+    void healthMethods() {
         assertEquals(1000, testStats.getHealth());
-    }
 
-    @Test
-    void retoreHealth() {
+        assertEquals(1000, testStats.getHealthPoints());
+
+        testStats.increaseHealthPoints(500);
+        assertEquals(1500, testStats.getHealthPoints());
+
+        testStats.takeDamage(500);
+        assertEquals(500, testStats.getHealth());
+
         testStats.retoreHealth(1000);
-        assertEquals(2500, testStats.getHealth());
+        assertEquals(1500, testStats.getHealth());
+
+        testStats.takeDamage(1000);
+        testStats.retoreHealth(500);
+        assertEquals(1000, testStats.getHealth());
+
+        testStats.takeDamage(2000);
+        assertEquals(0, testStats.getHealth());
+
+        testStats.retoreHealth(500);
+        assertEquals(0, testStats.getHealth());
     }
 
     @Test
@@ -62,7 +79,7 @@ class StatsTest {
         String expect = """
                 Stats
                 =========
-                Health: 1500
+                Health: 1000/1000
                 Base Attack: 1000
                 Defense Points: 1000""";
         assertEquals(expect, testStats.toString());

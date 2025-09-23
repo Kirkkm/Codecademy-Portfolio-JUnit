@@ -10,8 +10,8 @@ abstract class Entity {
 
     public Entity(String name, int health, int baseAttackPoint, int defensePoints){
         this.name = name;
-        this.stats = new Stats(health, baseAttackPoint, defensePoints);
-    };
+        this.stats = new Stats(health, health, baseAttackPoint, defensePoints);
+    }
 
     public String getName() {
         return this.name;
@@ -38,6 +38,11 @@ abstract class Entity {
             return stats.getBaseAttack();
         }
         return this.equipedWeapon.getAttackPoints();
+    }
+
+    public void takeDamage(int damage) {
+        int actualDamage = damage - this.stats.getDefensePoints();
+        this.stats.takeDamage(actualDamage);
     }
 
     public void learnAbility(Ability ability) {

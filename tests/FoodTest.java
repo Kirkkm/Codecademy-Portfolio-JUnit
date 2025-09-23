@@ -11,10 +11,10 @@ class FoodTest {
     @BeforeEach
     void setUp() {
         String mreDescription = "a self-contained, prepackaged meal designed for military and emergency use, providing a full day's caloric and nutritional requirements in a single, lightweight pouch";
-        Stats mreStatsEffect = new Stats(500, 200, 0);
+        Stats mreStatsEffect = new Stats(500, 0, 200, 0);
         MRE = new Food("MRE", mreDescription, mreStatsEffect, 1);
 
-        statsTest = new Stats(1000, 1000, 500);
+        statsTest = new Stats(1000, 1000, 0, 500);
     }
 
     @Test

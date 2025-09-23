@@ -31,11 +31,11 @@ class EntityTest {
         plasmaRifle = new Weapon("Plasma Rifle", prDescription, 1600, 1);
 
         mreDescription = "a self-contained, prepackaged meal designed for military and emergency use, providing a full day's caloric and nutritional requirements in a single, lightweight pouch";
-        mreStatsEffect = new Stats(500, 200, 0);
+        mreStatsEffect = new Stats(500,0, 200, 0);
         humanMRE = new Food("MRE", mreDescription, mreStatsEffect, 1);
         alienMRE = new Food("MRE", mreDescription, mreStatsEffect, 1);
 
-        brace = new Ability("Brace", "Raise your defences to prepare for an attack", "Universal", new Stats(0, 0, 500));
+        brace = new Ability("Brace", "Raise your defences to prepare for an attack", "Universal", new Stats(0, 0, 0, 500));
 
         humanEntityTest = new Human("John", 1000, 500, 500);
         alienEntityTest = new Alien("Arbiter", "Attacker");
@@ -60,7 +60,7 @@ class EntityTest {
 
     @Test
     void setStats() {
-        Stats newStats = new Stats(100, 100, 100);
+        Stats newStats = new Stats(100, 100, 100, 100);
         humanEntityTest.setStats(newStats);
         alienEntityTest.setStats(newStats);
 
