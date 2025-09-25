@@ -69,6 +69,15 @@ abstract class Entity {
         this.stats = abilityToUse.useAbility(this.stats);
     }
 
+    public void useItem(Item item) {
+        switch (item) {
+            case Weapon weapon -> throw new IllegalArgumentException("You can only equip weapons, select another item");
+            case Armor armor -> throw new IllegalArgumentException("You can only equip armor, select another item");
+            case Food food -> this.stats = food.eatFood(this.stats);
+            case null, default -> throw new IllegalArgumentException("No valid item selected, please select another item");
+        }
+    }
+
     public void storeItem(Item item) {
         if (!this.items.containsKey(item.getType())) {
             this.items.put(item.getType(), new ArrayList<>());

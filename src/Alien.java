@@ -44,6 +44,15 @@ public class Alien extends Entity {
         this.getStats().updateDefensePoints(randomDefenseStat);
     }
 
+    public void useItem(Item item) {
+        switch (item) {
+            case Weapon weapon -> throw new IllegalArgumentException("You can only equip weapons, select another item");
+            case Armor armor -> throw new IllegalArgumentException("You can only equip armor, select another item");
+            case Food food -> throw new IllegalArgumentException("You can not eat food, select another item");
+            case null, default -> throw new IllegalArgumentException("No valid item selected, please select another item");
+        }
+    }
+
     public void regen() {
         this.getStats().retoreHealth(this.regenAmount);
     }
