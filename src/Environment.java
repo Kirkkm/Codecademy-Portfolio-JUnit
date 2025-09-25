@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Environment  {
     private final int playersPartyLimit;
     private final int enemyPartyLimit;
-    private int actionsLimit;
+    private final int actionsLimit;
     private int turn;
 
     private final ArrayList<Entity> playersParty = new ArrayList<>();
