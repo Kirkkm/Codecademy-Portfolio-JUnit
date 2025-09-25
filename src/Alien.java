@@ -34,9 +34,9 @@ public class Alien extends Entity {
     public void mutate() {
         Random randomGenerator = new Random();
 
-        int randomHealthStat = randomGenerator.nextInt(100);
-        int randomAttackStat = randomGenerator.nextInt(100);
-        int randomDefenseStat = randomGenerator.nextInt(100);
+        int randomHealthStat = randomGenerator.nextInt(1, 100);
+        int randomAttackStat = randomGenerator.nextInt(1,100);
+        int randomDefenseStat = randomGenerator.nextInt(1,100);
 
         this.getStats().increaseHealthPoints(randomHealthStat);
         this.getStats().retoreHealth(randomHealthStat);
