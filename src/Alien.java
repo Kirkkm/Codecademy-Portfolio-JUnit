@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class Alien extends Entity {
-    private int regenAmount;
+    private final int regenAmount;
 
     public Alien(String name, String type){
         int health;
